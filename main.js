@@ -50,7 +50,7 @@ if (navigator.geolocation) {
 }
 
 let routes = null;
-let markers = null;
+let marker = null;
 // Search functionality
 document.getElementById('searchButton').addEventListener('click', function () {
   const locationName = document.getElementById('locationInput').value;
@@ -64,7 +64,7 @@ document.getElementById('searchButton').addEventListener('click', function () {
         map.setView([lat, lon], 22); // Zoom in on the location
 
         // Optional: Add a marker
-        markers = L.marker([lat, lon]).addTo(map)
+        marker = L.marker([lat, lon]).addTo(map)
           .bindPopup(locationName)
           .openPopup();
 
@@ -90,9 +90,9 @@ document.getElementById('getDirection').addEventListener('click', function () {
         // map.setView([lat, lon], 13); // Zoom in on the location
 
         // Optional: Add a marker
-        if (routes || markers) {
+        if (routes || marker) {
           map.removeControl(routes);
-          map.removeLayer(markers);
+          // map.removeLayer(markers);
         }
 
         routes = L.Routing.control({
